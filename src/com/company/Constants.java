@@ -8,4 +8,5 @@ public class Constants {
     public static int windowHeight = 480;
     public static double ironDensity = 7.874d;
     public static int menuPadding = windowHeight/10;
+    public static double degreeToRadianRatio = 0.0174532925;
 }

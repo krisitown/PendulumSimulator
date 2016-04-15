@@ -8,7 +8,7 @@ public class Pendulum {
     private static int armLength;
     public static int originX;
     public static int originY;
-    private static int angle;
+    private static double angle;
     private static double g;
     private static double mass;
 
@@ -46,16 +46,18 @@ public class Pendulum {
         Pendulum.armLength = armLength;
     }
 
-    public static void setAngle(int angle) {
+    public static void setAngle(double angle) {
         if(angle < 0){
             throw new IllegalArgumentException("The angle must be a positive integer");
         }
+
+        //converts the degrees into radians for use in the cin and cos functions
+        angle *= Constants.degreeToRadianRatio;
         Pendulum.angle = angle;
 
-        //need fixin'
         //change the ball's position when changing the angle
-        Pendulum.ball.setX(Math.abs((int)(Pendulum.armLength*Math.sin(angle)) + originX));
-        Pendulum.ball.setY(Math.abs((int)(Pendulum.armLength*Math.cos(angle))));
+        Pendulum.ball.setX((int)(Pendulum.armLength*Math.sin(angle)) + originX);
+        Pendulum.ball.setY((int)(Pendulum.armLength*Math.cos(angle)) + originY);
     }
 
 
