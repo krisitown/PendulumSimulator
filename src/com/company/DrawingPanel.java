@@ -4,10 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by krisitown on 15.04.16.
+ * Used to draw on the screen
  */
 public class DrawingPanel extends JPanel {
-    private double time = 0.0;
+    public static double time = 0.0;
 
     public DrawingPanel() {
         this.validate();
@@ -21,6 +21,9 @@ public class DrawingPanel extends JPanel {
 
         graphicSettings.setColor(Color.BLACK);
 
+        graphicSettings.fillRect(Pendulum.getOriginCoordinates()[0] - 5, Pendulum.getOriginCoordinates()[1] + Constants.menuPadding - 5,
+                10, 10);
+
         graphicSettings.drawLine(Pendulum.getOriginCoordinates()[0], Pendulum.getOriginCoordinates()[1] + Constants.menuPadding,
                 Pendulum.getBallCoordinates()[0], Pendulum.getBallCoordinates()[1] + Constants.menuPadding);
 
@@ -30,12 +33,15 @@ public class DrawingPanel extends JPanel {
         graphicSettings.fillOval(Pendulum.getBallCoordinates()[0] - (int)Pendulum.getBallRadius()/2, Pendulum.getBallCoordinates()[1] + Constants.menuPadding
                 - (int)Pendulum.getBallRadius()/2, (int)Pendulum.getBallRadius(), (int)Pendulum.getBallRadius());
 
+        graphicSettings.drawString("T = " + Pendulum.getPeriod() + "s;    ν = " + (Pendulum.getPeriod() != 0 ? (1/Pendulum.getPeriod()) + "Hz;" : "N/A;")
+                + "    θ = " + (int)(Pendulum.getAngle()*Constants.radianToDegreeRatio) + "°", 50, Constants.windowHeight - Constants.windowHeight/14);
+
         //turns on anti-aliasing
         graphicSettings.setRenderingHint( RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         if(Pendulum.isStarted){
             Pendulum.moveBall(time);
-            time += 0.016;
+            time += 0.008;
         }
     }
 }

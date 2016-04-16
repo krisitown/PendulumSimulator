@@ -70,7 +70,7 @@ public class SimulationWindow extends JFrame  {
         this.add(drawingPanel);
 
         ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(5);
-        executor.scheduleAtFixedRate(new RepaintThePendulum(this), 0L, 16L, TimeUnit.MILLISECONDS); //todo find the best arguments
+        executor.scheduleAtFixedRate(new RepaintThePendulum(this), 0L, 8L, TimeUnit.MILLISECONDS); //todo find the best arguments
 
         this.setVisible(true);
     }

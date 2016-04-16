@@ -1,7 +1,7 @@
 package com.company;
 
 /**
- * Created by krisitown on 15.04.16.
+ * Do not change these
  */
 public class Constants {
     public static int windowWidth = 640;
@@ -9,4 +9,5 @@ public class Constants {
     public static double ironDensity = 7.874d;
     public static int menuPadding = windowHeight/10;
     public static double degreeToRadianRatio = 0.0174532925;
+    public static double radianToDegreeRatio = 57.2957795;
 }

@@ -12,9 +12,11 @@ public class Pendulum {
     private static double startAngle;
     private static double g;
     private static double mass, angularVelocity, period, amplitude;
+    private static double dampingRatio;
     public static boolean isStarted;
 
-    public static void Initialize(){
+
+    public static void initialize(){
         originX = Constants.windowWidth / 2;
         originY = Constants.windowHeight / 4;
         ball = new Ball(Pendulum.originX, Pendulum.originY + 120, 50); //default values
@@ -25,15 +27,19 @@ public class Pendulum {
         period = 2* Math.PI*Math.sqrt(armLength/g);
         angularVelocity = 2 * Math.PI*(1/period);
         amplitude = Math.sqrt(2*armLength*armLength*(1 - Math.cos(Pendulum.startAngle)));
+        dampingRatio = 0.05;
+        DrawingPanel.time = 0.0;
+
+
         isStarted = true;
     }
 
     public static void moveBall(double time){
         //x = А * sin(w*t + f)
 
-        double x = Pendulum.startAngle * Math.sin(Pendulum.angularVelocity*time);
-        double cosTheta = 1 - ((x*x)/(2*(armLength*armLength)));
-        double theta = Math.acos(cosTheta);
+
+        //I am a math magician boooo
+        double x = Pendulum.startAngle * Math.sin(Pendulum.angularVelocity*time);// * Math.exp(-1*dampingRatio*time);
         Pendulum.setAngle(x);
     }
 
@@ -87,5 +93,13 @@ public class Pendulum {
 
         Pendulum.startAngle = startAngle;
         Pendulum.setAngle(startAngle);
+    }
+
+    public static double getPeriod() {
+        return period;
+    }
+
+    public static double getAngle() {
+        return angle;
     }
 }
