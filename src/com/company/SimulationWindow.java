@@ -56,6 +56,7 @@ public class SimulationWindow extends JFrame  {
             Pendulum.setBallMass(Double.parseDouble(ballMass.getText()));
             Pendulum.setG(Double.parseDouble(g.getText()));
             Pendulum.setAngle(Integer.parseInt(startAngle.getText()));
+            Pendulum.start();
         });
 
         //add the button to the panel accepting the values
@@ -66,7 +67,7 @@ public class SimulationWindow extends JFrame  {
         this.add(drawingPanel);
 
         ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(5);
-        executor.scheduleAtFixedRate(new RepaintThePendulum(this), 0L, 20L, TimeUnit.MILLISECONDS); //todo find the best arguments
+        executor.scheduleAtFixedRate(new RepaintThePendulum(this), 0L, 16L, TimeUnit.MILLISECONDS); //todo find the best arguments
 
         this.setVisible(true);
     }

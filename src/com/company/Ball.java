@@ -32,9 +32,6 @@ public class Ball {
     }
 
     public void setY(int y) {
-        if(y <= 0){
-            throw new IllegalArgumentException("The Ball's Y coordinate must be positive");
-        }
         this.Y = y;
     }
 

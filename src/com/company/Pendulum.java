@@ -11,6 +11,9 @@ public class Pendulum {
     private static double angle;
     private static double g;
     private static double mass;
+    private static double period, angularMomentum;
+
+    public static boolean isStarted = false;
 
     public static void Initialize(){
         originX = Constants.windowWidth / 2;
@@ -18,13 +21,17 @@ public class Pendulum {
         ball = new Ball(Pendulum.originX, Pendulum.originY + 300, 50); //default values
     }
 
-    public static void Start(){
+    public static void start(){
         ball = new Ball(Pendulum.originX, Pendulum.originY + armLength, mass);
+        period = 2* Math.PI*Math.sqrt(armLength/g);
+        angularMomentum = 2 * Math.PI*(1/period);
+        isStarted = true;
     }
 
-    public static void moveBall(){
+    public static void moveBall(double time){
         //ico code goes here, may god help me
-
+        ball.setX((int)(originX + armLength * Math.sin(angularMomentum * time)));
+        ball.setY((int)(originY + armLength * Math.cos(angularMomentum * time))); //i have no idea whether this works :)d
     }
 
     public static int[] getOriginCoordinates(){

@@ -7,6 +7,8 @@ import java.awt.*;
  * Created by krisitown on 15.04.16.
  */
 public class DrawingPanel extends JPanel {
+    private static double time = 0.0;
+
     public DrawingPanel() {
         this.validate();
     }
@@ -31,5 +33,9 @@ public class DrawingPanel extends JPanel {
         //turns on anti-aliasing
         graphicSettings.setRenderingHint( RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
+        if(Pendulum.isStarted){
+            Pendulum.moveBall(time);
+            time += 0.016;
+        }
     }
 }
