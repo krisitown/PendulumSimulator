@@ -7,7 +7,7 @@ import java.awt.*;
  * Created by krisitown on 15.04.16.
  */
 public class DrawingPanel extends JPanel {
-    private static double time = 0.0;
+    private double time = 0.0;
 
     public DrawingPanel() {
         this.validate();

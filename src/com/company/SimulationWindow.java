@@ -52,10 +52,13 @@ public class SimulationWindow extends JFrame  {
 
         //add an action listener to the button so it accepts the arguments when it's clicked
         button.addActionListener(e -> {
-            Pendulum.setArmLength(Integer.parseInt(armLength.getText())*10);
+            Pendulum.setArmLength(Integer.parseInt(armLength.getText())*6);
             Pendulum.setBallMass(Double.parseDouble(ballMass.getText()));
             Pendulum.setG(Double.parseDouble(g.getText()));
-            Pendulum.setAngle(Integer.parseInt(startAngle.getText()));
+
+            int angle = Integer.parseInt(startAngle.getText());
+
+            Pendulum.setStartAngle(angle*Constants.degreeToRadianRatio); //convert the degrees into radians
             Pendulum.start();
         });
 
