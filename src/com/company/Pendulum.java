@@ -17,36 +17,42 @@ public class Pendulum {
 
 
     public static void initialize(){
+        //initializes the pendulum origin point
+        //used so that the pendulum class is loaded before the drawer is trying to access it
         originX = Constants.windowWidth / 2;
         originY = Constants.windowHeight / 4;
+
+        //create a ball with some default values
         ball = new Ball(Pendulum.originX, Pendulum.originY + 120, 50); //default values
     }
 
+    //indicates the start of the movement of the pendulum
     public static void start(){
-        ball = new Ball(Pendulum.originX, Pendulum.originY + (int)(armLength * 250), mass);
+        //creates the bob with the values given from the GUI
+        ball = new Ball(Pendulum.originX, Pendulum.originY + (int)(armLength * 500), mass);
+
+        //computes the values of key variables
         period = 2* Math.PI*Math.sqrt(armLength/g);
         angularVelocity = 2 * Math.PI*(1/period);
         amplitude = Math.sqrt(2*armLength*armLength*(1 - Math.cos(Pendulum.startAngle)));
-        dampingRatio = 0.05;
-        DrawingPanel.time = 0.0;
+        dampingRatio = armLength/(2*mass);
 
-
+        //used to check if the pendulum is started from outside classes
         isStarted = true;
     }
 
+    //a function which gets the angle theta of the pendulum based on a specific point in time
     public static void moveBall(double time){
-        //x = А * sin(w*t + f)
-
-
-        //I am a math magician boooo
-        double x = Pendulum.startAngle * Math.sin(Pendulum.angularVelocity*time);// * Math.exp(-1*dampingRatio*time);
-        Pendulum.setAngle(x);
+        double theta = Pendulum.startAngle * Math.sin(Pendulum.angularVelocity*time) * Math.exp(-1*dampingRatio*time);
+        Pendulum.setAngle(theta);
     }
 
+    //used to get the coordinates of the origin
     public static int[] getOriginCoordinates(){
         return new int[] {originX, originY};
     }
 
+    //used to get the coordinates of the ball
     public static int[] getBallCoordinates(){
         return new int[] {ball.getX(), ball.getY()};
     }
@@ -62,15 +68,16 @@ public class Pendulum {
         Pendulum.armLength = armLength;
     }
 
+    //sets the angle of the pendulum and changes the position of the ball accordingly
     public static void setAngle(double angle) {
         Pendulum.angle = angle;
 
-        //change the ball's position when changing the angle
-        Pendulum.ball.setX((int)(Pendulum.armLength*250*Math.sin(Pendulum.angle)) + originX);
-        Pendulum.ball.setY((int)(Pendulum.armLength*250*Math.cos(Pendulum.angle)) + originY);
+        //*500 used because armLength is stored in meters and in order to make it more visible on the screen
+        Pendulum.ball.setX((int)(Pendulum.armLength*500*Math.sin(Pendulum.angle)) + originX);
+        Pendulum.ball.setY((int)(Pendulum.armLength*500*Math.cos(Pendulum.angle)) + originY);
     }
 
-
+    //simple setters and getters + encapsulation
     public static void setG(double g) {
         if(g <= 0){
             throw new IllegalArgumentException("g must be a positive number");
@@ -83,7 +90,6 @@ public class Pendulum {
             throw new IllegalArgumentException("The mass of the ball must be a positive value");
         }
         Pendulum.mass = mass;
-        Pendulum.ball.setMass(mass);
     }
 
     public static void setStartAngle(double startAngle){
@@ -101,5 +107,9 @@ public class Pendulum {
 
     public static double getAngle() {
         return angle;
+    }
+
+    public static double getBallMass() {
+        return mass;
     }
 }
