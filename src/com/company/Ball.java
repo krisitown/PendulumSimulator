@@ -54,6 +54,6 @@ public class Ball {
     private void computeRadius() {
         double v = Constants.ironDensity * this.mass;
         radius = Math.abs(Math.pow(3*v/4*Math.PI, 1.0/3.0)); //TODO get radius from volume = (4 Pi radius^3) / 3
-        radius *= 5; //make it more visible
+        radius *= 4; //make it more visible
     }
 }

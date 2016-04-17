@@ -5,7 +5,7 @@ package com.company;
  */
 public class Pendulum {
     private static Ball ball;
-    private static int armLength;
+    private static double armLength;
     public static int originX;
     public static int originY;
     private static double angle;
@@ -23,7 +23,7 @@ public class Pendulum {
     }
 
     public static void start(){
-        ball = new Ball(Pendulum.originX, Pendulum.originY + armLength, mass);
+        ball = new Ball(Pendulum.originX, Pendulum.originY + (int)(armLength * 250), mass);
         period = 2* Math.PI*Math.sqrt(armLength/g);
         angularVelocity = 2 * Math.PI*(1/period);
         amplitude = Math.sqrt(2*armLength*armLength*(1 - Math.cos(Pendulum.startAngle)));
@@ -55,7 +55,7 @@ public class Pendulum {
         return ball.getRadius();
     }
 
-    public static void setArmLength(int armLength) {
+    public static void setArmLength(double armLength) {
         if(armLength <= 0){
             throw new IllegalArgumentException("The length of the arm must be a positive integer");
         }
@@ -66,8 +66,8 @@ public class Pendulum {
         Pendulum.angle = angle;
 
         //change the ball's position when changing the angle
-        Pendulum.ball.setX((int)(Pendulum.armLength*Math.sin(Pendulum.angle)) + originX);
-        Pendulum.ball.setY((int)(Pendulum.armLength*Math.cos(Pendulum.angle)) + originY);
+        Pendulum.ball.setX((int)(Pendulum.armLength*250*Math.sin(Pendulum.angle)) + originX);
+        Pendulum.ball.setY((int)(Pendulum.armLength*250*Math.cos(Pendulum.angle)) + originY);
     }
 
 

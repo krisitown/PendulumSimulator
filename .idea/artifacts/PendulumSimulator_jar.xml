@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="PendulumSimulator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PendulumSimulator_jar</output-path>
+    <root id="archive" name="PendulumSimulator.jar">
+      <element id="module-output" name="PendulumSimulator" />
+    </root>
+  </artifact>
+</component>

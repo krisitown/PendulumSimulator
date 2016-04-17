@@ -41,7 +41,7 @@ public class DrawingPanel extends JPanel {
 
         if(Pendulum.isStarted){
             Pendulum.moveBall(time);
-            time += 0.008;
+            time += 0.005;
         }
     }
 }

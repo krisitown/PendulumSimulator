@@ -52,7 +52,7 @@ public class SimulationWindow extends JFrame  {
 
         //add an action listener to the button so it accepts the arguments when it's clicked
         button.addActionListener(e -> {
-            Pendulum.setArmLength(Integer.parseInt(armLength.getText())*6);
+            Pendulum.setArmLength(Double.parseDouble(armLength.getText())/100);
             Pendulum.setBallMass(Double.parseDouble(ballMass.getText()));
             Pendulum.setG(Double.parseDouble(g.getText()));
 
@@ -70,7 +70,7 @@ public class SimulationWindow extends JFrame  {
         this.add(drawingPanel);
 
         ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(5);
-        executor.scheduleAtFixedRate(new RepaintThePendulum(this), 0L, 8L, TimeUnit.MILLISECONDS); //todo find the best arguments
+        executor.scheduleAtFixedRate(new RepaintThePendulum(this), 0L, 5L, TimeUnit.MILLISECONDS); //todo find the best arguments
 
         this.setVisible(true);
     }
