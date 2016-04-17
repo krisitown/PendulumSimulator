@@ -6,15 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66ea20b7-b087-48cb-972e-df5222137306" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Ball.java" afterPath="$PROJECT_DIR$/src/com/company/Ball.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Constants.java" afterPath="$PROJECT_DIR$/src/com/company/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/DrawingPanel.java" afterPath="$PROJECT_DIR$/src/com/company/DrawingPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Pendulum.java" afterPath="$PROJECT_DIR$/src/com/company/Pendulum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/RepaintThePendulum.java" afterPath="$PROJECT_DIR$/src/com/company/RepaintThePendulum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/SimulationWindow.java" afterPath="$PROJECT_DIR$/src/com/company/SimulationWindow.java" />
-    </list>
+    <list default="true" id="66ea20b7-b087-48cb-972e-df5222137306" name="Default" comment="" />
     <ignored path="PendulumSimulator.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
